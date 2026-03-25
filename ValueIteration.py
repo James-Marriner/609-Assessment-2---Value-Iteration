@@ -3,10 +3,10 @@ from pymonad.tools import curry
 
 @curry(7)
 def Update(Actions,Probabilities, Rewards, Discount, State, ValueFunction,Policy):
-    Q_s_a = list(map(lambda A : Rewards[State,A] + Discount* sum(map(math.prod, zip(ValueFunction,Probabilities[State,A]))), Actions))
+    Q_s_a = list(map(lambda A : Rewards[State,A] + Discount* sum(map(math.prod, zip(ValueFunction,Probabilities[State,A]))), Actions[State]))
     Best = max(Q_s_a)
     if(Policy):
-        return(Actions[Q_s_a.index(Best)])
+        return(Actions[State][Q_s_a.index(Best)])
     else:
         return(Best)
 
@@ -37,13 +37,17 @@ def Async_VI(States,Actions,Probabilities,Rewards,Discount,TerminationFunction):
 
     Update_step = Update(Actions,Probabilities,Rewards,Discount)
 
-    n = len(States)
+    NonTerminal = [S for S in Actions if Actions[S]]
+
+    n = len(NonTerminal)
     V_new = [0 for i in range(n)]
     Continue = True
     while(Continue):
         V_old = V_new.copy()
-        V_new = [Update_step(s,V_new, False) for s in States]
+        V_new = [Update_step(s,V_new, False) for s in NonTerminal]
         Continue = TerminationFunction(V_new,V_old)
 
-    Opt_policy = [Update_step(s,V_new, True) for s in States]
-    return(Opt_policy, V_new)
+    Opt_policy = {s : "None" for s in States}
+    Final_V = {States[i] : V_new[i] for i in range(n)}
+    for s in NonTerminal: Opt_policy[s] = Update_step(s,V_new, True) 
+    return(Opt_policy, Final_V)
