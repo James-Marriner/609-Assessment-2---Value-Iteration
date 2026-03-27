@@ -10,9 +10,15 @@ The Value Iteration package allows for implementation of asynchronous value iter
 python -m pip install 'git+https://github.com/James-Marriner/609-Assessment-2---Value-Iteration.git'
 ```
 
-### To run package tests:
+### Unit tests:
+The associated unit tests for the Value Iteration are not installed alongside the package by default. To verify their results please do the following.
+```text
+git clone https://github.com/James-Marriner/609-Assessment-2---Value-Iteration.git
+```
+When inside the cloned repository, if needed install the pytest package and run the tests by
 ```python
-python -m ValueIteration.Tests.runtests
+pip install pytest
+pytest ValueIteration/Tests
 ```
 
 ## Examples
@@ -61,7 +67,7 @@ Finally, whilst the termination conditions off flexibility, users may prefer tha
 James Marriner - j.marriner@lancaster.ac.uk. Author, Maintainer and Creator.
 
 ## Version
-This package was created usig Python 3.13.10 with no dependencies.
+This package was created using Python 3.13.10 and package Pymonad 2.4.0.
 
 ## References
 [1] <a id="ref1"></a>
