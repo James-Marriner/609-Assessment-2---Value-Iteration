@@ -17,7 +17,7 @@ git clone https://github.com/James-Marriner/609-Assessment-2---Value-Iteration.g
 ```
 Move into the cloned repository which by default is done by
 ```text
-cd 609-Assessment-2---Value-Iteration.
+cd 609-Assessment-2---Value-Iteration
 ```
  Then, if needed install the pytest package and run the tests by
 ```python
