@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Value-Iteration"
+version = "0.0.0"
+maintainers = [
+  { name="James Marriner", email="j.marriner1@lancaster.ac.uk" },
+]
+authors = [
+  { name="James Marriner", email="j.marriner1@lancaster.ac.uk"},
+]
+description = "Value Iteration Implementation for MDPs"
+requires-python = ">=3.13.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+	""
+]
+
+[project.urls]
+homepage = "https://github.com/James-Marriner/609-Assessment-2---Value-Iteration"
