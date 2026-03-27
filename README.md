@@ -22,15 +22,17 @@ Two examples are provided including Example 9.27 and a simplified version of Exa
 The implementation of Value Iteration is asynchronous in updating the value function and deals with maximising rewards. Hence, minimisation problems will need to be reformatted for solving.
 
 ```text
-Inputs: S, a set of states,
+Inputs: 
+	S, a set of states,
 	A, the set of available actions for each state,
 	P(s'|a,s), the probability of entering state s' from state s when taking action a
 	R(s',a,s), the reward associated with entering state s' from state s by action a.
 	Gamma, the discount factor in (0,1) for the MDP
 	Termination Function, a parameterised function that determines the termination 	condition.
 
-Outputs: π[s], the approximate optimal policy for each state,
-	 V[s], the current value function for each state
+Outputs: 
+	π[s], the approximate optimal policy for each state,
+	V[s], the current value function for each state
 
 
 Local: Assign V[s] = 0 for each state

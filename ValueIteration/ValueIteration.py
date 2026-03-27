@@ -16,9 +16,12 @@ def Update(Actions:dict,
            State:str,
            ValueFunction:callable,
            Policy:bool):
+
+    # Uses Bellman's Equation to calculate the new value function.
     Q_s_a = list(map(lambda A : Rewards[State,A] + Discount* Dot_Product(ValueFunction,Probabilities[State,A]), Actions[State]))
     Best = max(Q_s_a)
     if(Policy):
+        # Used to find the policy instead of the value function
         return(Actions[State][Q_s_a.index(Best)])
     else:
         return(Best)
