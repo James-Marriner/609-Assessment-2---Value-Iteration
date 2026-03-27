@@ -1,0 +1,66 @@
+### Value Iteration for Markov Decision Processes.
+
+The Value Iteration package allows for implementation of asynchronous value iteration algorithm for Markov Decision Processes (MDPs). The package allows for different termination conditions for the algorithm allowing user flexibility in usage.
+
+## Installation
+
+# To install from github with pip
+
+```python 
+python -m pip install 'git+ZZZ'
+```
+
+# To run package tests:
+```python
+python -m zzz.tests.runtests
+```
+
+## Examples
+Two simple examples are provided in the example folder to illustrate how the package may be used.
+
+## Value Iteration Implementation.
+The implementation of Value Iteration is asynchronous in updating the value function and deals with maximising rewards. Hence, minimisation problems will need to be reformatted for solving.
+
+```text
+Inputs: S, a set of states,
+	A, the set of available actions for each state,
+	P(s'|a,s), the probability of entering state s' from state s when taking action a
+	R(s',a,s), the reward associated with entering state s' from state s by action a.
+	\gamma, the discount factor in (0,1) for the MDP
+	Termination Function, a parameterised function that determines the termination 	condition.
+
+Outputs: \pi[s], the approximate optimal policy for each state,
+	 V[s], the current value function for each state
+
+
+Local: Assign V[s] = 0 for each state
+repeat:
+	For each state s, compute
+	$$
+	Q[s,a] = \sum_{s'} P(s' \mid s,a)\big[R(s,a,s') + \gamma V(s')\big]
+	V[s] = \max_a Q[s,a]
+	$$
+Until Termination Function.
+For each state s do:
+	$$
+	Q[s,a] = \sum_{s'} P(s' \mid s,a)\big[R(s,a,s') + \gamma V(s')\big]
+	\pi[s] = \argmax_a Q[s,a]
+	$$
+Return \pi, V.
+```
+
+With the exceptions of specifiying the discount factor and termination condition, this implementation follows exactly that seen in "source".
+
+
+# Limitations and Further Work
+Currently as seen in the pseudo code, the algorithm stores the updating value for all possible actions. For a large MDP this could be infeasible, in which case a check could be performed to only record the action if it improves upon a previously checked action.
+
+Additionally, the current format required to input the transition probabilities and rewards is cumbersome and may put off potential package users so it is worth exploring alternative methods which improve user input experience.
+
+Finally, whilst the termination conditions off flexibility, users may prefer that they are incorporated into the algorithm rather than being externally specified. In their current form, the termination conditions are only checked after a full sweep of updating the value function. This could mean that in the case of a large MDP, the time termination occurs far after the specified time if many states are being updated.
+
+# Creator
+James Marriner - j.marriner@lancaster.ac.uk. Author, Maintainer and Creator.
+
+# References
+
