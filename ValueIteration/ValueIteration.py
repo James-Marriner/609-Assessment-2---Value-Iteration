@@ -1,11 +1,6 @@
-import math
 import time
 from pymonad.tools import curry
-
-def Dot_Product(v1:list[any],
-                v2:list[any])-> float:
-    # Computes the dot product
-    return(sum(map(math.prod, zip(v1,v2))))
+from .Utilities.Dot_Product import Dot_Product
 
 def Expected_Reward(Probabilities:dict, 
                     Conditional_Rewards:dict)-> dict:
