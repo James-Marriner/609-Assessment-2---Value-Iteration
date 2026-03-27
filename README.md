@@ -15,7 +15,11 @@ The associated unit tests for the Value Iteration are not installed alongside th
 ```text
 git clone https://github.com/James-Marriner/609-Assessment-2---Value-Iteration.git
 ```
-When inside the cloned repository, if needed install the pytest package and run the tests by
+Move into the cloned repository which by default is done by
+```text
+cd 609-Assessment-2---Value-Iteration.
+```
+ Then, if needed install the pytest package and run the tests by
 ```python
 pip install pytest
 pytest ValueIteration/Tests
