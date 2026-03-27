@@ -1,22 +1,22 @@
-### Value Iteration for Markov Decision Processes.
+# Value Iteration for Markov Decision Processes.
 
 The Value Iteration package allows for implementation of asynchronous value iteration algorithm for Markov Decision Processes (MDPs). The package allows for different termination conditions for the algorithm allowing user flexibility in usage.
 
 ## Installation
 
-# To install from github with pip
+### To install from github with pip
 
 ```python 
 python -m pip install 'git+ZZZ'
 ```
 
-# To run package tests:
+### To run package tests:
 ```python
 python -m zzz.tests.runtests
 ```
 
 ## Examples
-Two simple examples are provided in the example folder to illustrate how the package may be used.
+Two simple examples are provided including Example 9.27 and a simplified version of Example 9.28 from [1](#ref1).
 
 ## Value Iteration Implementation.
 The implementation of Value Iteration is asynchronous in updating the value function and deals with maximising rewards. Hence, minimisation problems will need to be reformatted for solving.
@@ -29,7 +29,7 @@ Inputs: S, a set of states,
 	\gamma, the discount factor in (0,1) for the MDP
 	Termination Function, a parameterised function that determines the termination 	condition.
 
-Outputs: \pi[s], the approximate optimal policy for each state,
+Outputs: $\pi$[s], the approximate optimal policy for each state,
 	 V[s], the current value function for each state
 
 
@@ -52,15 +52,16 @@ Return \pi, V.
 With the exceptions of specifiying the discount factor and termination condition, this implementation follows exactly that seen in "source".
 
 
-# Limitations and Further Work
+## Limitations and Further Work
 Currently as seen in the pseudo code, the algorithm stores the updating value for all possible actions. For a large MDP this could be infeasible, in which case a check could be performed to only record the action if it improves upon a previously checked action.
 
 Additionally, the current format required to input the transition probabilities and rewards is cumbersome and may put off potential package users so it is worth exploring alternative methods which improve user input experience.
 
 Finally, whilst the termination conditions off flexibility, users may prefer that they are incorporated into the algorithm rather than being externally specified. In their current form, the termination conditions are only checked after a full sweep of updating the value function. This could mean that in the case of a large MDP, the time termination occurs far after the specified time if many states are being updated.
 
-# Creator
+## Creator
 James Marriner - j.marriner@lancaster.ac.uk. Author, Maintainer and Creator.
 
-# References
-
+## References
+[1] <a id="ref1"></a>
+[Poole, D. L., & Mackworth, A. K. (2017). *Artificial Intelligence: Foundations of Computational Agents* (2nd ed.)](https://artint.info/2e/html2e/ArtInt2e.html)
